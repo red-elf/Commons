@@ -1,1 +1,1 @@
-The 'Commons' C++ library
+Commons
