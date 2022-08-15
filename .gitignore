@@ -34,3 +34,4 @@ _Dependencies
 BuildConfig.*
 Version.*
 VersionInfo.*
+.idea
