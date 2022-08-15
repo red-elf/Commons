@@ -1,2 +1,3 @@
 # Commons
-Common shared code between the C++ projects
+
+The common shared code between the C++ projects.
