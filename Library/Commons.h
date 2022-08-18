@@ -24,6 +24,22 @@ namespace Commons {
                 out.push_back(str.substr(start, end - start));
             }
         }
+
+        std::string removeBetween(std::string str, std::string open, std::string close) {
+            std::string::size_type begin, end;
+            while ((begin = str.find(open)) != std::string::npos) {
+                if (((end = str.find(close)) != std::string::npos) && (end > begin))
+                    str.erase(begin, end - begin + 2);
+                else
+                    break;
+            }
+            return str;
+        }
+
+        std::string removeComments(std::string str) {
+
+            return removeBetween(str, "/*", "*/");
+        }
     }
 
     namespace IO {
