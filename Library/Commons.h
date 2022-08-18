@@ -29,7 +29,7 @@ namespace Commons {
             std::string::size_type begin, end;
             while ((begin = str.find(open)) != std::string::npos) {
                 if (((end = str.find(close)) != std::string::npos) && (end > begin))
-                    str.erase(begin, end - begin + 2);
+                    str.erase(begin, end - begin + close.size());
                 else
                     break;
             }
