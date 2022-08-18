@@ -47,7 +47,6 @@ namespace Commons {
             while ((begin = str.find(from)) != std::string::npos) {
 
                 end = str.find_last_of('\n');
-                std::cout << "End: " << std::to_string(end) << std::endl;
 
                 if (end != std::string::npos && end > begin) {
 
