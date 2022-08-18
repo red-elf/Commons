@@ -26,12 +26,34 @@ namespace Commons {
         }
 
         std::string removeBetween(std::string str, std::string open, std::string close) {
+
             std::string::size_type begin, end;
+
             while ((begin = str.find(open)) != std::string::npos) {
-                if (((end = str.find(close)) != std::string::npos) && (end > begin))
+
+                if (((end = str.find(close)) != std::string::npos) && (end > begin)) {
+
                     str.erase(begin, end - begin + close.size());
-                else
-                    break;
+
+                } else break;
+            }
+            return str;
+        }
+
+        std::string removeAfter(std::string str, std::string from) {
+
+            std::string::size_type begin, end;
+
+            while ((begin = str.find(from)) != std::string::npos) {
+
+                end = str.find_last_of('\n');
+                std::cout << "End: " << std::to_string(end) << std::endl;
+
+                if (end != std::string::npos && end > begin) {
+
+                    str.erase(begin, end - begin + 1);
+
+                } else break;
             }
             return str;
         }
