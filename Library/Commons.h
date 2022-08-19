@@ -25,19 +25,31 @@ namespace Commons {
             }
         }
 
-        std::string removeBetween(std::string str, std::string open, std::string close) {
+        std::string& eraseBetween(std::string& subject, std::string from, std::string to) {
+
+            std::size_t begin = subject.find(from);
+            std::size_t end = subject.find(to);
+
+            if (begin != std::string::npos && end != std::string::npos) {
+
+                return subject.erase(begin, subject.length() - (end - begin + 2));
+            }
+            return subject;
+        }
+
+        std::string eraseAllBetween(std::string& subject, std::string opening, std::string closure) {
 
             std::string::size_type begin, end;
 
-            while ((begin = str.find(open)) != std::string::npos) {
+            while ((begin = subject.find(opening)) != std::string::npos) {
 
-                if (((end = str.find(close)) != std::string::npos) && (end > begin)) {
+                if (((end = subject.find(closure)) != std::string::npos) && (end > begin)) {
 
-                    str.erase(begin, end - begin + close.size());
+                    subject.erase(begin, end - begin + closure.size());
 
                 } else break;
             }
-            return str;
+            return subject;
         }
 
         std::string removeAfter(std::string str, std::string from) {
@@ -59,7 +71,7 @@ namespace Commons {
 
         std::string removeComments(std::string str) {
 
-            return removeBetween(str, "/*", "*/");
+            return eraseAllBetween(str, "/*", "*/");
         }
     }
 
