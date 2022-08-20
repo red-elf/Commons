@@ -93,6 +93,13 @@ namespace Commons {
             out.append(buf, 0, stream.gcount());
             return out;
         }
+
+        void writeFile(std::string& what, std::string where) {
+
+            std::ofstream out(where);
+            out << what;
+            out.close();
+        }
     }
 }
 
