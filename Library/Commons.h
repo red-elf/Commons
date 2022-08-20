@@ -26,7 +26,7 @@ namespace Commons {
             }
         }
 
-        std::string& eraseBetween(std::string& subject, std::string from, std::string to) {
+        std::string &eraseBetween(std::string &subject, std::string from, std::string to) {
 
             std::size_t begin = subject.find(from);
             std::size_t end = subject.find(to);
@@ -38,7 +38,7 @@ namespace Commons {
             return subject;
         }
 
-        std::string eraseAllBetween(std::string& subject, std::string opening, std::string closure) {
+        std::string eraseAllBetween(std::string &subject, std::string opening, std::string closure) {
 
             std::string::size_type begin, end;
 
@@ -94,9 +94,17 @@ namespace Commons {
             return out;
         }
 
-        void writeFile(std::string& what, std::string where) {
+        void writeFile(std::string &what, std::string where) {
 
             std::ofstream out(where);
+            out << what;
+            out.close();
+        }
+
+        void appendToFile(std::string &what, std::string where) {
+
+            std::ofstream out;
+            out.open(where, std::ios_base::app);
             out << what;
             out.close();
         }
