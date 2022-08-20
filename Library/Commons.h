@@ -8,6 +8,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <list>
 
 namespace Commons {
 
@@ -77,7 +78,7 @@ namespace Commons {
 
     namespace IO {
 
-        auto read_file(std::string_view path) -> std::string {
+        auto readFile(std::string_view path) -> std::string {
 
             constexpr auto read_size = std::size_t(4096);
             auto stream = std::ifstream(path.data());
