@@ -28,12 +28,12 @@ namespace Commons {
 
         std::string &eraseBetween(std::string &subject, std::string from, std::string to) {
 
-            std::size_t begin = subject.find(from);
-            std::size_t end = subject.find_last_of(to);
+            size_t begin = subject.find(from);
+            size_t end = subject.find_last_of(to);
 
-            if (begin != std::string::npos && end != std::string::npos) {
+            if (std::string::npos != begin && std::string::npos != end && begin <= end) {
 
-                return subject.erase(begin, subject.length() - (end - begin + 2));
+                return subject.erase(begin, end - begin + 1);
             }
             return subject;
         }
