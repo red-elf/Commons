@@ -26,7 +26,61 @@ namespace Commons {
             }
         }
 
-        std::string &eraseBetween(std::string &subject, std::string from, std::string to) {
+        std::string trim(
+
+                const std::string &str,
+                const std::string &whitespace = " \t"
+
+        ) {
+
+            const auto strBegin = str.find_first_not_of(whitespace);
+
+            if (strBegin == std::string::npos) {
+
+                return ""; // no content
+            }
+
+            const auto strEnd = str.find_last_not_of(whitespace);
+            const auto strRange = strEnd - strBegin + 1;
+
+            return str.substr(strBegin, strRange);
+        }
+
+        std::string reduce(
+
+                const std::string &str,
+                const std::string &fill = " ",
+                const std::string &whitespace = " \t"
+
+        ) {
+
+            // trim first
+            auto result = trim(str, whitespace);
+
+            // replace sub ranges
+            auto beginSpace = result.find_first_of(whitespace);
+
+            while (beginSpace != std::string::npos) {
+
+                const auto endSpace = result.find_first_not_of(whitespace, beginSpace);
+                const auto range = endSpace - beginSpace;
+
+                result.replace(beginSpace, range, fill);
+
+                const auto newStart = beginSpace + fill.length();
+                beginSpace = result.find_first_of(whitespace, newStart);
+            }
+
+            return result;
+        }
+
+        std::string &eraseBetween(
+
+                std::string &subject,
+                const std::string &from,
+                const std::string &to
+
+        ) {
 
             size_t begin = subject.find(from);
             size_t end = subject.find_last_of(to);
@@ -38,7 +92,13 @@ namespace Commons {
             return subject;
         }
 
-        std::string eraseAllBetween(std::string &subject, std::string opening, std::string closure) {
+        std::string eraseAllBetween(
+
+                std::string &subject,
+                const std::string &opening,
+                const std::string &closure
+
+        ) {
 
             std::string::size_type begin, end;
 
@@ -53,7 +113,11 @@ namespace Commons {
             return subject;
         }
 
-        std::string removeAfter(std::string str, std::string from) {
+        std::string removeAfter(
+
+                std::string str,
+                const std::string &from
+        ) {
 
             std::string::size_type begin, end;
 
@@ -94,14 +158,14 @@ namespace Commons {
             return out;
         }
 
-        void writeFile(std::string &what, std::string where) {
+        void writeFile(std::string &what, const std::string &where) {
 
             std::ofstream out(where);
             out << what;
             out.close();
         }
 
-        void appendToFile(std::string &what, std::string where) {
+        void appendToFile(std::string &what, const std::string &where) {
 
             std::ofstream out;
             out.open(where, std::ios_base::app);
