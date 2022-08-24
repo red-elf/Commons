@@ -91,6 +91,23 @@ namespace Commons {
             return false;
         }
 
+        bool hasBeginning(
+
+                const std::string &fullString,
+                const std::string &beginning
+
+        ) {
+
+            if (fullString.length() >= beginning.length()) {
+
+                auto compare = fullString
+                        .compare(0, beginning.length(), beginning);
+
+                return 0 == compare;
+            }
+            return false;
+        }
+
         std::string &eraseBetween(
 
                 std::string &subject,
