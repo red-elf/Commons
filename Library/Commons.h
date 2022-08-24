@@ -74,6 +74,23 @@ namespace Commons {
             return result;
         }
 
+        bool hasEnding(
+
+                const std::string &fullString,
+                const std::string &ending
+
+        ) {
+
+            if (fullString.length() >= ending.length()) {
+
+                auto compare = fullString
+                        .compare(fullString.length() - ending.length(), ending.length(), ending);
+
+                return 0 == compare;
+            }
+            return false;
+        }
+
         std::string &eraseBetween(
 
                 std::string &subject,
