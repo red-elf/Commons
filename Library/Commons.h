@@ -181,7 +181,7 @@ namespace Commons {
             return str;
         }
 
-        std::string removeComments(std::string str) {
+        std::string removeComments(std::string &str) {
 
             return eraseAllBetween(str, "/*", "*/");
         }
