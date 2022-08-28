@@ -8,14 +8,14 @@
 
 std::string StringDataProcessor::process(std::string &input) {
 
-    for (IProcessor<std::string, const std::string> *processor: recipes) {
+    for (IProcessor<std::string, std::string> *processor: recipes) {
 
         input = processor->process(input);
     }
     return input;
 }
 
-bool StringDataProcessor::doRegister(IProcessor<std::string, const std::string> *what) {
+bool StringDataProcessor::doRegister(IProcessor<std::string, std::string> *what) {
 
     if (std::find(recipes.begin(), recipes.end(), what) != recipes.end()) {
 
@@ -33,7 +33,7 @@ bool StringDataProcessor::doRegister(IProcessor<std::string, const std::string> 
     return false;
 }
 
-bool StringDataProcessor::doUnregister(IProcessor<std::string, const std::string> *&what) {
+bool StringDataProcessor::doUnregister(IProcessor<std::string, std::string> *&what) {
 
     if (std::find(recipes.begin(), recipes.end(), what) != recipes.end()) {
 

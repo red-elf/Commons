@@ -12,18 +12,18 @@
 
 class StringDataProcessor :
         public IProcessor<std::string, std::string>,
-        public IRegistration<IProcessor<std::string, const std::string> *> {
+        public IRegistration<IProcessor<std::string, std::string> *> {
 
 public:
 
     [[nodiscard]] std::string process(std::string &input) override;
 
-    [[nodiscard]] bool doRegister(IProcessor<std::string, const std::string> *what) override;
-    [[nodiscard]] bool doUnregister(IProcessor<std::string , const std::string> *&what) override;
+    [[nodiscard]] bool doRegister(IProcessor<std::string, std::string> *what) override;
+    [[nodiscard]] bool doUnregister(IProcessor<std::string , std::string> *&what) override;
 
 private:
 
-    std::vector<IProcessor<std::string, const std::string> *> recipes;
+    std::vector<IProcessor<std::string, std::string> *> recipes;
 };
 
 
