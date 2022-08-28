@@ -10,8 +10,8 @@ class IRegistration {
 
 public:
 
-    virtual bool doRegister(T &what) = 0;
-    virtual bool doUnregister(T &what) = 0;
+    virtual const bool doRegister(T &what) = 0;
+    virtual const bool doUnregister(T &what) = 0;
 };
 
 
