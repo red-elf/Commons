@@ -11,15 +11,15 @@
 #include "IRegistration.h"
 
 class StringDataProcessor :
-        public IProcessor<std::string, const std::string>,
+        public IProcessor<std::string, std::string>,
         public IRegistration<IProcessor<std::string, const std::string> *> {
 
 public:
 
-    [[nodiscard]] const std::string process(std::string &input) override;
+    [[nodiscard]] std::string process(std::string &input) override;
 
-    [[nodiscard]] bool doRegister(IProcessor<std::string, const std::string> *what) override = 0;
-    [[nodiscard]] bool doUnregister(IProcessor<std::string , const std::string> *&what) override = 0;
+    [[nodiscard]] bool doRegister(IProcessor<std::string, const std::string> *what) override;
+    [[nodiscard]] bool doUnregister(IProcessor<std::string , const std::string> *&what) override;
 
 private:
 

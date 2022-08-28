@@ -6,7 +6,7 @@
 
 #include "StringDataProcessor.h"
 
-const std::string StringDataProcessor::process(std::string &input) {
+std::string StringDataProcessor::process(std::string &input) {
 
     for (IProcessor<std::string, const std::string> *processor: recipes) {
 
