@@ -3,7 +3,6 @@
 //
 
 #include <algorithm>
-
 #include "StringDataProcessor.h"
 
 std::string StringDataProcessor::process(std::string &input) {
@@ -17,32 +16,14 @@ std::string StringDataProcessor::process(std::string &input) {
 
 bool StringDataProcessor::doRegister(IProcessor<std::string, std::string> *what) {
 
-    if (std::find(recipes.begin(), recipes.end(), what) != recipes.end()) {
-
-        return true;
-
-    } else {
-
-        recipes.push_back(what);
-
-        if (std::find(recipes.begin(), recipes.end(), what) != recipes.end()) {
-
-            return true;
-        }
-    }
-    return false;
+    size_t size = recipes.size();
+    recipes.push_back(what);
+    return size != recipes.size();
 }
 
 bool StringDataProcessor::doUnregister(IProcessor<std::string, std::string> *&what) {
 
-    if (std::find(recipes.begin(), recipes.end(), what) != recipes.end()) {
-
-        recipes.erase(find(recipes.begin(), recipes.end(), what));
-
-        if (std::find(recipes.begin(), recipes.end(), what) != recipes.end()) {
-
-            return false;
-        }
-    }
-    return true;
+    size_t size = recipes.size();
+    recipes.erase(std::remove(recipes.begin(), recipes.end(), what), recipes.end());
+    return size != recipes.size();
 }
