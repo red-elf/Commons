@@ -10,6 +10,8 @@ class IProcessor {
 
 public:
 
+    virtual ~IProcessor() = default;
+
     virtual OUT process(IN &input) = 0;
 };
 

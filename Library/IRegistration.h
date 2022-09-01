@@ -10,6 +10,8 @@ class IRegistration {
 
 public:
 
+    virtual ~IRegistration() = default;
+
     virtual bool doRegister(T what) = 0;
     virtual bool doUnregister(T &what) = 0;
 };
