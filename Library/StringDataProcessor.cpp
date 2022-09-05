@@ -14,16 +14,16 @@ std::string StringDataProcessor::process(std::string &input) {
     return input;
 }
 
-bool StringDataProcessor::doRegister(IProcessor<std::string, std::string> *what) {
+bool StringDataProcessor::doRegister(IProcessor<std::string, std::string> &what) {
 
     size_t size = recipes.size();
-    recipes.push_back(what);
+    recipes.push_back(&what);
     return size != recipes.size();
 }
 
-bool StringDataProcessor::doUnregister(IProcessor<std::string, std::string> *&what) {
+bool StringDataProcessor::doUnregister(IProcessor<std::string, std::string> &what) {
 
     size_t size = recipes.size();
-    recipes.erase(std::remove(recipes.begin(), recipes.end(), what), recipes.end());
+    recipes.erase(std::remove(recipes.begin(), recipes.end(), &what), recipes.end());
     return size != recipes.size();
 }

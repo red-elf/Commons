@@ -12,14 +12,14 @@
 
 class StringDataProcessor :
         public IProcessor<std::string, std::string>,
-        public IRegistration<IProcessor<std::string, std::string> *> {
+        public IRegistration<IProcessor<std::string, std::string>> {
 
 public:
 
     [[nodiscard]] std::string process(std::string &input) override;
 
-    [[nodiscard]] bool doRegister(IProcessor<std::string, std::string> *what) override;
-    [[nodiscard]] bool doUnregister(IProcessor<std::string , std::string> *&what) override;
+    [[nodiscard]] bool doRegister(IProcessor<std::string, std::string> &what) override;
+    [[nodiscard]] bool doUnregister(IProcessor<std::string , std::string> &what) override;
 
 private:
 
