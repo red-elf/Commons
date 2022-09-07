@@ -212,11 +212,26 @@ std::string Commons::IO::readFile(std::string_view path) {
     return out;
 }
 
+std::ifstream::pos_type Commons::IO::fileSize(const std::string &filename) {
+
+    std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
+    return in.tellg();
+}
+
 void Commons::IO::writeFile(std::string &what, const std::string &where) {
 
     std::ofstream out(where);
     out << what;
     out.close();
+}
+
+bool Commons::IO::writeFileWithResult(std::string &what, const std::string &where) {
+
+    auto expected = what.length();
+    writeFile(what, where);
+    auto written = fileSize(where);
+
+    return expected == written;
 }
 
 void Commons::IO::appendToFile(std::string &what, const std::string &where) {
@@ -225,10 +240,4 @@ void Commons::IO::appendToFile(std::string &what, const std::string &where) {
     out.open(where, std::ios_base::app);
     out << what;
     out.close();
-}
-
-std::ifstream::pos_type Commons::IO::fileSize(const std::string &filename) {
-
-    std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
-    return in.tellg();
 }

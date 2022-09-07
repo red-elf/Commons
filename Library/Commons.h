@@ -57,6 +57,8 @@ namespace Commons {
 
         void writeFile(std::string &what, const std::string &where);
 
+        bool writeFileWithResult(std::string &what, const std::string &where);
+
         void appendToFile(std::string &what, const std::string &where);
 
         std::ifstream::pos_type fileSize(const std::string &filename);
