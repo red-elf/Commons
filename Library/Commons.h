@@ -48,7 +48,7 @@ namespace Commons {
 
         char fileSeparator();
 
-        char lineBreak();
+        std::string lineBreak();
     }
 
     namespace IO {

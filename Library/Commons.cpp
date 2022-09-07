@@ -191,9 +191,9 @@ char Commons::Strings::fileSeparator() {
 #endif
 }
 
-char Commons::Strings::lineBreak() {
+std::string Commons::Strings::lineBreak() {
 
-    return '\n';
+    return "\n";
 }
 
 std::string Commons::IO::readFile(std::string_view path) {
