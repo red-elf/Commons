@@ -191,6 +191,11 @@ char Commons::Strings::fileSeparator() {
 #endif
 }
 
+char Commons::Strings::lineBreak() {
+
+    return '\n';
+}
+
 std::string Commons::IO::readFile(std::string_view path) {
 
     constexpr auto read_size = std::size_t(4096);

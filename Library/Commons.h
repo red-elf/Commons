@@ -47,6 +47,8 @@ namespace Commons {
         std::string camelcase(std::string &what);
 
         char fileSeparator();
+
+        char lineBreak();
     }
 
     namespace IO {
