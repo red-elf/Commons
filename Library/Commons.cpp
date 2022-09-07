@@ -226,3 +226,9 @@ void Commons::IO::appendToFile(std::string &what, const std::string &where) {
     out << what;
     out.close();
 }
+
+std::ifstream::pos_type Commons::IO::fileSize(const std::string &filename) {
+
+    std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
+    return in.tellg();
+}

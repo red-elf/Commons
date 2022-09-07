@@ -5,11 +5,11 @@
 #ifndef COMMONS_COMMONS_H
 #define COMMONS_COMMONS_H
 
+#include <list>
 #include <string>
+#include <vector>
 #include <fstream>
 #include <iostream>
-#include <list>
-#include <vector>
 
 namespace Commons {
 
@@ -58,6 +58,8 @@ namespace Commons {
         void writeFile(std::string &what, const std::string &where);
 
         void appendToFile(std::string &what, const std::string &where);
+
+        std::ifstream::pos_type fileSize(const std::string &filename);
     }
 }
 
