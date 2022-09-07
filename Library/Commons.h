@@ -39,6 +39,12 @@ namespace Commons {
         std::string removeAfter(std::string str, const std::string &from);
 
         std::string removeComments(std::string &str);
+
+        std::string capitalize(std::string &what);
+
+        std::string deCapitalize(std::string &what);
+
+        std::string camelcase(std::string &what);
     }
 
     namespace IO {
