@@ -45,6 +45,8 @@ namespace Commons {
         std::string deCapitalize(std::string &what);
 
         std::string camelcase(std::string &what);
+
+        char fileSeparator();
     }
 
     namespace IO {

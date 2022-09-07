@@ -182,6 +182,15 @@ std::string Commons::Strings::camelcase(std::string &what) {
     return what.substr(0, res_ind);
 }
 
+char Commons::Strings::fileSeparator() {
+
+#ifdef _WIN32
+    return '\\';
+#else
+    return '/';
+#endif
+}
+
 std::string Commons::IO::readFile(std::string_view path) {
 
     constexpr auto read_size = std::size_t(4096);
