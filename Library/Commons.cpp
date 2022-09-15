@@ -246,7 +246,7 @@ void Commons::IO::appendToFile(std::string &what, const std::string &where) {
     out.close();
 }
 
-bool Commons::IO::createDirectory(const std::string &path) {
+bool Commons::IO::createDirectories(const std::string &path) {
 
     if (!fs::is_directory(path) || !fs::exists(path)) {
 

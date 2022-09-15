@@ -63,7 +63,7 @@ namespace Commons {
 
         std::ifstream::pos_type fileSize(const std::string &filename);
 
-        bool createDirectory(const std::string &path);
+        bool createDirectories(const std::string &path);
     }
 }
 
