@@ -252,7 +252,7 @@ bool Commons::IO::createDirectory(const std::string &path) {
 
         try {
 
-            if (!fs::create_directory(path)) {
+            if (!fs::create_directories(path)) {
 
                 return false;
             }
