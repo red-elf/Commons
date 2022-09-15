@@ -62,6 +62,8 @@ namespace Commons {
         void appendToFile(std::string &what, const std::string &where);
 
         std::ifstream::pos_type fileSize(const std::string &filename);
+
+        bool createDirectory(const std::string &path);
     }
 }
 

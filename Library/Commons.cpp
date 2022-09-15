@@ -3,10 +3,14 @@
 //
 
 #include "Commons.h"
-#include <string>
-#include <iostream>
+
 #include <list>
+#include <string>
 #include <vector>
+#include <iostream>
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 void Commons::Strings::tokenize(const std::string &str, char delim, std::list<std::string> &out) {
 
@@ -240,4 +244,23 @@ void Commons::IO::appendToFile(std::string &what, const std::string &where) {
     out.open(where, std::ios_base::app);
     out << what;
     out.close();
+}
+
+bool Commons::IO::createDirectory(const std::string &path) {
+
+    if (!fs::is_directory(path) || !fs::exists(path)) {
+
+        try {
+
+            if (!fs::create_directory(path)) {
+
+                return false;
+            }
+
+        } catch (std::filesystem::filesystem_error &error) {
+
+            return false;
+        }
+    }
+    return true;
 }
